@@ -11,7 +11,7 @@ I boid cercano di mantenere lo stormo unito avvicinandosi lentamente al centro d
 altri robot. Questa regola incoraggia i boid a restare vicini come gruppo e promuove un senso di unità nello stormo.
 ### Separazione (Figura 1b): 
 Ogni boid, se troppo vicino ad un altro, cercherà di allontanarsi dalla “folla”. Questa regola evita che si verifichino delle collisioni e assicura che i boid non si spingano troppo vicino gli uni agli altri.
-###Allineamento (Figura 1c): 
+### Allineamento (Figura 1c): 
 Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) a quella degli altri componenti dello stormo. Questa regola promuove un movimento nella stessa direzione dei vicini, contribuendo a un moto di gruppo più coesivo.
 
-
+<img src="https://ibb.co/g9C5Gn8" height="60" width="60" >
