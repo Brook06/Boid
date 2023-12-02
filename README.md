@@ -14,4 +14,5 @@ Ogni boid, se troppo vicino ad un altro, cercherà di allontanarsi dalla “foll
 ### Allineamento (Figura 1c): 
 Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) a quella degli altri componenti dello stormo. Questa regola promuove un movimento nella stessa direzione dei vicini, contribuendo a un moto di gruppo più coesivo.
 
-<img src="https://ibb.co/g9C5Gn8" height="60" width="60" >
+![Test Image](Regole del modello Boid.jpg)
+
