@@ -18,5 +18,5 @@ Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) 
   <img src="https://github.com/Brook06/Boid/blob/main/Regole%20del%20modello%20Boid.jpeg" alt="Test Image">
 </div>
 
-![Test Image](https://github.com/Brook06/Boid/blob/main/Regole%20del%20modello%20Boid.jpeg)
+
 
