@@ -13,5 +13,7 @@ altri robot. Questa regola incoraggia i boid a restare vicini come gruppo e prom
 Ogni boid, se troppo vicino ad un altro, cercherà di allontanarsi dalla “folla”. Questa regola evita che si verifichino delle collisioni e assicura che i boid non si spingano troppo vicino gli uni agli altri.
 ### Allineamento (Figura 1c): 
 Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) a quella degli altri componenti dello stormo. Questa regola promuove un movimento nella stessa direzione dei vicini, contribuendo a un moto di gruppo più coesivo.
+
+
 ![Test Image](https://github.com/Brook06/Boid/blob/main/Regole%20del%20modello%20Boid.jpeg)
 
