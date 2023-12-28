@@ -15,6 +15,7 @@ private:
     void alignment(const std::vector<Robot>& Robots);
     void cohesion(const std::vector<Robot>& Robots);
     void limitSpeed();
+    
 
 public:
   // Posizione del robot
@@ -26,8 +27,7 @@ public:
     Robot(double pos_x_, double pos_y_, double vel_x_, double vel_y_);
    
     void position_update(const std::vector<Robot>& Robots,const int step);
-    // Inizializzazione statica
-    //static vector<Robot> Robots;
+    void borders(Robot& Robot,double left_margin, double right_margin, double top_margin, double bottom_margin );
 };
 
 #endif 
