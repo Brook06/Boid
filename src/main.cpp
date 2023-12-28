@@ -1,11 +1,13 @@
 #include "Robot.h"
 #include <fstream>
+using std::ifstream;
 #include <iostream>
+using std::cout;
+using std::endl;
 #include <vector>
+using std::vector;
 
-
-
-// Inizializzazione statica
+/// Inizializzazione statica
 std::vector<Robot> Robots;
 
 int main() {
