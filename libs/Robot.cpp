@@ -1,6 +1,8 @@
 #include "Robot.h"
 #include <vector>
 #include <cmath>
+#include <thread>
+#include <mutex>
 
 
 // Parametri regolabili
@@ -15,7 +17,7 @@ const double max_speed = 5.0;
 const double turn_factor = 1.0;
 
 
-
+Robot::Robot(){}
 // definizione (inizializzazione) del costruttore 
 Robot::Robot(double pos_x, double pos_y, double vel_x, double vel_y) 
      : pos_x_{pos_x}, pos_y_{pos_y}, vel_x_{vel_x}, vel_y_{vel_y}{}
@@ -102,10 +104,12 @@ void Robot:: limitSpeed(){
         if (speed > max_speed){
             vel_x_ = (vel_x_ / speed) * max_speed;
             vel_y_ = (vel_y_ / speed) * max_speed;
+            //cerr << "troppo veloce"<< endl;
         }
-        if (speed > min_speed){
+        if (speed < min_speed){
             vel_x_ = (vel_x_ / speed) * min_speed;
             vel_y_ = (vel_y_ / speed) * min_speed;
+            //cerr << "troppo lento"<< endl;
         }
 
 }
@@ -127,16 +131,16 @@ void Robot:: borders(Robot& Robot,double left_margin, double right_margin, doubl
 }
 
     
-void Robot:: position_update(const std::vector<Robot>& Robots, const int step){
-        cerr << "inizio separazione "<< step << endl;
+void Robot:: position_update(const std::vector<Robot>& Robots, const int step, const int id){
+        //cerr << "inizio separazione "<< step << endl;
         separation(Robots);
-        cerr << "inizio alineamento"<< step << endl;
+        //cerr << "inizio alineamento"<< step << endl;
         alignment(Robots);
-        cerr << "inizio coesione"<< step << endl;
+        //cerr << "inizio coesione"<< step << endl;
         cohesion(Robots);
-        cerr << "inizio limite di velocità"<< step << endl;
+        //cerr << "inizio limite di velocità"<< step << endl;
         limitSpeed();
-        cerr << "fine aggiornamento posizione"<< step << endl;
+        //cerr << "fine aggiornamento posizione:  "<< step << " della thread numero: "<< id << endl;
 
         // aggiornamento posizione considero delta T = 1, velcoità di 1px/frame 
         pos_x_ = pos_x_ + vel_x_;

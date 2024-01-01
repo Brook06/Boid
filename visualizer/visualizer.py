@@ -1,6 +1,6 @@
 import numpy as np
 
-with open("coordinates.txt", "r") as file:
+with open("/root/HWW/Boid/build/coordinates.txt", "r") as file:
     lines = file.readlines()
     lines = [line.strip() for line in lines]
 

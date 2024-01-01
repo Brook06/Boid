@@ -10,9 +10,35 @@ using std::vector;
 #include <ctime>    
 #include <thread>
 #include <mutex>
+#include <algorithm>
 
+
+std::mutex mutexRobots;
+std::mutex coutMutex;   
+//std::condition_variable cv;
+//std::atomic<int> turn(0);
 /// Inizializzazione statica
-std::vector<Robot> Robots;
+vector<Robot> Robots;
+vector<Robot> Robots_output;
+vector<bool> updated_Robots;
+
+void updatePosition(int id, const int step, const double left_margin,const double right_margin,const double top_margin,const double bottom_margin ){
+    Robot robot_thread = Robots[id];
+    if(!updated_Robots[id]){
+        //std::unique_lock<std::mutex> lock(mutexRobots);
+        robot_thread.position_update(Robots, step, id);
+        robot_thread.borders(robot_thread,left_margin, right_margin, top_margin, bottom_margin);
+        //std::lock_guard<std::mutex> lock(mutexRobots);
+        mutexRobots.lock();
+        Robots_output[id] = robot_thread;
+        updated_Robots[id] = true;
+        mutexRobots.unlock();
+        //bul_vecto = true;
+        coutMutex.lock();  
+        cerr << "thread numero: "<< id <<" valore_update : "<< updated_Robots[id] <<" step  :" << step << endl;
+        coutMutex.unlock();
+    }  
+}
 
 int main() {
     std::srand(std::time(0));
@@ -20,6 +46,7 @@ int main() {
     int no_of_robot;
     cerr << "inserisci il numero di Robot: ";
     cin >> no_of_robot ;
+
     // Crea 100 oggetti Robot con posizioni e velocità casuali
     for (int i = 0; i < no_of_robot; ++i) {
         float rand_x = static_cast<float>(std::rand() % no_of_robot); // Posizione x casuale
@@ -29,35 +56,49 @@ int main() {
 
         Robots.push_back(Robot(rand_x, rand_y, rand_vx, rand_vy));
     }
-    
 
     //cerr << "fine creazione robot di prova" << endl;
-    cerr << "dimensione vettore"<<Robots.size()<< endl;
+    cerr << "dimensione vettore "<<Robots.size()<< endl;
     double left_margin, right_margin, top_margin, bottom_margin;
-    cerr << "inserisci i confini: x_min, x_max , y_min, y_max";
+    cerr << "inserisci i confini: x_min, x_max , y_min, y_max " << endl;
     cin >> left_margin >> right_margin >> top_margin >> bottom_margin ;
 
-    vector<std::thread> threads;
+    Robots_output.resize(no_of_robot);
+    updated_Robots.resize(no_of_robot + 1, false);
+    //vector<std::thread> threads;
 
     //salvataggio delle posizioni 
     ofstream outputFile("coordinates.txt",ios::app);
+    //outputFile.open(outputFile,std::ios::out | std::ios::trunc);
 
     if (outputFile.is_open()) {
         outputFile << left_margin <<" " << right_margin <<" "<< top_margin <<" "<< bottom_margin << " ";
         outputFile << std::endl;
 
         for(int step = 0; step < 1000; step++){
-            std::cerr << "ciclo numero"<< step << endl;
-            // scrivere il ciclo for per la creazione delle threads, ci saranno Robots.size() threads, prima aggiorno tutte le posizioni 
-            // salvandole in un vettore e poi stampo il vettore con le posizioni aggionate. Ho bisogno di un vettore bool che mi dica che il thread nell posizione i 
-            //del vettore Robots ha aggiornato la sua posizione e che una volta che il vettore è tutto vero allora il vettore Robots è tutto aggiornato,
-            // allora posso aspettare che tutte le thread abbiano finito, che poi stampo sul file esterno le coordinate aggiornate e ricomincio con il nuovo ciclo for step++.
-
-            for(size_t i = 0; i< Robots.size(); ++i){
-            Robots[i].position_update(Robots, step);
-            Robots[i].borders(Robots[i],left_margin, right_margin, top_margin, bottom_margin);
-            outputFile << Robots[i].pos_x_ <<" "<< Robots[i].pos_y_<< " ";
+            cerr << "ciclo numero"<< step << endl;
+            vector<std::thread> threads;
+            for(int j = 0; j < no_of_robot; ++j){
+                std::string thread_name = "Rob" + std::to_string(j);
+                threads.push_back(std::thread(updatePosition, j, step, left_margin, right_margin, top_margin, bottom_margin));
             }
+
+            for (size_t z = 0; z < no_of_robot; ++z) {
+                threads[z].join();
+            }
+            cerr << "tutte le thread sono chiuse: "<< step << endl;
+
+            for(size_t i = 0; i< Robots_output.size(); ++i){
+                outputFile << Robots_output[i].pos_x_ <<" "<< Robots_output[i].pos_y_<< " ";
+                updated_Robots[i] = false;
+                
+            }
+            cerr << "tutte le posizioni sono stampate: " << step << endl;
+            for(size_t t = 0; t< Robots_output.size(); ++t){
+                Robots[t] = Robots_output[t];
+                cerr << "Robots modifica elemento numero: "<< t <<" : "<< step << endl;
+            }
+            cerr << "il vettore Robots è stato modificato: " << step<< endl;
             outputFile << std::endl;
         }  
         //outputFile << endl;
