@@ -17,19 +17,16 @@ private:
     void cohesion(const std::vector<Robot>& Robots);
     void limitSpeed();
 
-    
-
 public:
-  // Posizione del robot
-    double pos_x_, pos_y_;
-    // Velocità del _robot
-    double vel_x_, vel_y_;
+    double pos_x_, pos_y_; //posizione del Robot
+    double vel_x_, vel_y_; //velocità del Robot
+    //int time_step_; 
+
     Robot();
-    //costruttore personalizzato
     Robot(double pos_x_, double pos_y_, double vel_x_, double vel_y_);
    
-    void position_update(const std::vector<Robot>& Robots,const int step, const int id);
-    void borders(Robot& Robot,double left_margin, double right_margin, double top_margin, double bottom_margin );
+    void position_update(const std::vector<Robot>& Robots);
+    void borders(const int left_margin,const int right_margin, const int top_margin, const int bottom_margin );
 };
 
 #endif 
