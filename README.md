@@ -32,7 +32,6 @@ Il progetto è organizzato in modo chiaro e modulare:
 
 Per compilare il progetto, seguire questi semplici passaggi:
 Navigare nella cartella `build`.
-   ```bash
 
    `cd build`
 
@@ -40,7 +39,9 @@ Navigare nella cartella `build`.
 
    `make`
 
-## Come Eseguire
+
+## Come Compilare
+
 se si vuole eseguire la versione piu completa:
 
    `./src/main`
