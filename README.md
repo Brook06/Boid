@@ -1,4 +1,4 @@
-# Boid
+# Boid - Simulazione di Robotica di Gruppo
 
 ## 1 Introduzione
 
