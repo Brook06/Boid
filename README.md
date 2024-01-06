@@ -18,5 +18,40 @@ Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) 
   <img src="https://github.com/Brook06/Boid/blob/main/images/Regole%20del%20modello%20Boid.jpeg" alt="Test Image">
 </div>
 
+## Struttura del Progetto
 
+Il progetto è organizzato in modo chiaro e modulare:
 
+- **`build`:** Contiene i file generati durante il processo di compilazione.
+- **`include`:** Contiene i file di intestazione (header) del progetto.
+- **`libs`:** Include eventuali librerie esterne utilizzate nel progetto.
+- **`src`:** Contiene il codice sorgente principale del progetto.
+- **`visualizer`:** Include file o script relativi alla visualizzazione dei dati.
+
+## Come Compilare
+
+Per compilare il progetto, seguire questi semplici passaggi:
+Navigare nella cartella `build`.
+   ```bash
+
+   `cd build`
+
+   `cmake ..`
+
+   `make`
+
+## Come Eseguire
+se si vuole eseguire la versione piu completa:
+
+   `./src/main`
+
+altrimenti :
+   `./src/main1`
+
+## Come Visualizzare
+
+   `cd ..`
+
+   `cd visualizer`
+
+   `python3 visualizer.py`
