@@ -47,6 +47,7 @@ se si vuole eseguire la versione piu completa:
    `./src/main`
 
 altrimenti :
+
    `./src/main1`
 
 ## Come Visualizzare
