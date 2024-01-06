@@ -101,11 +101,9 @@ int main() {
     int no_of_robot;
     cout << "Enter the number of Robots: ";
     cin >> no_of_robot ;
-    int left_margin, right_margin, top_margin, bottom_margin;
-    cout << "Enter the boundaries: x_min, x_max, y_min, y_max " << endl;
-    cin >> left_margin >> right_margin >> bottom_margin >> top_margin;
 
-    
+    int left_margin{0}, right_margin{1000}, top_margin{1000}, bottom_margin{0};
+
     //Creation of a vector of robots with random positions and velocities
     std::srand(std::time(0));
     for (int i = 0; i < no_of_robot; ++i) {
