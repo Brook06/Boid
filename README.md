@@ -40,13 +40,13 @@ Navigare nella cartella `build`.
    `make`
 
 
-## Come Compilare
+## Come eseguire
 
-se si vuole eseguire la versione piu completa:
+se si vuole eseguire la soluzione con variabili condizione :
 
    `./src/main`
 
-altrimenti :
+altrimenti la soluzione con mutex :
 
    `./src/main1`
 
