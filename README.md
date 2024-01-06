@@ -66,4 +66,5 @@ Secondo metodo dentro la cartella **`visualizer`:**
 
 Se si vuole utilizzare i file presenti nella cartella visualizer, bisogno modificare il nome del file nel seguente nome:
   **`coordinates.txt`**
+  
 I numeri dopo il  **`coordinates.txt`** stanno ad indicare il numero di Robot (Boid) coinvolti in quella simulazione.
