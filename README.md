@@ -52,8 +52,17 @@ altrimenti :
 
 ## Come Visualizzare
 
+Primo metodo dentro cartella **`build`:**
+  
+  `python3 visualizer.py`
+
+Secondo metodo dentro la cartella **`visualizer`:**
+
    `cd ..`
 
    `cd visualizer`
 
    `python3 visualizer.py`
+
+Se si vuole utilizzare i file presenti nella cartella visualizer, bisogno modificare il nome del file nel seguente nome:
+  **`coordinates.txt`:**
