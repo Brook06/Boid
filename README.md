@@ -22,10 +22,10 @@ Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) 
 
 Il progetto è organizzato in modo chiaro e modulare:
 
-- **`build`:** Contiene i file generati durante il processo di compilazione.
-- **`include`:** Contiene i file di intestazione (header) del progetto.
-- **`libs`:** Include eventuali librerie esterne utilizzate nel progetto.
-- **`src`:** Contiene il codice sorgente principale del progetto.
+- **`build`:** Contiene i file generati durante il processo di compilazione ed il file visualizer.py.
+- **`include`:** Contiene il file Robot.h definizione della classe Robot.
+- **`libs`:** Include libreria Robot.cpp utilizzata nel progetto.
+- **`src`:** Contiene i codici sorgenti principali del progetto.
 - **`visualizer`:** Include file o script relativi alla visualizzazione dei dati.
 
 ## Come Compilare
