@@ -3,8 +3,7 @@
 #define Robot_h
 
 #include <iostream>
-#include <vector>
-#include <mutex> 
+#include <vector> 
 
 using namespace std;
 
@@ -20,7 +19,6 @@ private:
 public:
     double pos_x_, pos_y_; //posizione del Robot
     double vel_x_, vel_y_; //velocità del Robot
-    //int time_step_; 
 
     Robot();
     Robot(double pos_x_, double pos_y_, double vel_x_, double vel_y_);

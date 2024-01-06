@@ -1,12 +1,9 @@
 #include "Robot.h"
 #include <vector>
 #include <cmath>
-#include <thread>
-#include <mutex>
 
 
 // Parametri regolabili
-
 const double d_sep = 10.0;
 const double d_ca = 50.0;
 const double avoidfactor = 0.1;
