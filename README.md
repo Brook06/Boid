@@ -20,7 +20,7 @@ Ogni boid cerca di adattare la propria velocità (in direzione, verso e modulo) 
 
 ## Struttura del Progetto
 
-Il progetto è organizzato in modo chiaro e modulare:
+Il progetto è organizzato in modo modulare:
 
 - **`build`:** Contiene i file generati durante il processo di compilazione ed il file visualizer.py.
 - **`include`:** Contiene il file Robot.h definizione della classe Robot.
